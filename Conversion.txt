@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int t;
+    string str;
+    cin >> t;
+    cin.ignore();
+    while(t--){
+        getline(cin, str);
+        for(char r: str){
+            if(r>96) cout << (int)r-96;
+            else if(r==' ') cout << '$';
+            else cout << (int)r-64;
+        }
+        cout << "\n";
+        str.clear();
+    }
+    return 0;
+}

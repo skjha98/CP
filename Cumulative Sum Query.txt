@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector <long long int> arraysum;
+
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t, n, q, l, r;
+    long long int temp;
+    //cin >> t;
+    //while(t--){
+        cin >> n;
+        //arraysum.push_back(0);
+        for(int i=0; i<n; i++){
+            cin >> temp;
+            arraysum.push_back(temp+(i==0?0:arraysum[i-1]));
+        }
+        cin >> q;
+        for(int i=0; i<q; i++){
+            cin >> l;
+            cin >> r;
+            if(l==0) cout << arraysum[r] << "\n";
+            else
+            cout << arraysum[r]-arraysum[l-1] << "\n";
+        }
+        cout << "\n";
+        arraysum.clear();
+    //}
+    return 0;
+}

@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+vector<long long int> min_prime(1e7, -1);
+
+void precompute(){
+	for(int i=2; i<1e7; i++){
+		if(min_prime[i]==-1){
+			for(int itr=2*i; itr<1e7; itr+=i){
+				if(min_prime[itr]==-1)	min_prime[itr]=i;
+			}
+		}
+	}
+}
+
+int main(){
+	precompute();
+	long long int n;
+	while(scanf("%lld", &n)!=EOF){
+		printf("1");
+		while(min_prime[n]!=-1){
+			//cout << " " << min_prime[n] << " x ";
+			printf(" x %d", min_prime[n]);
+			n/=min_prime[n];
+		}
+		if(n!=1)	printf(" x %d",n);
+		printf("\n");
+	}
+			
+	return 0;
+}

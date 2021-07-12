@@ -1,0 +1,24 @@
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+vector<int> chars(27,0);
+
+int main() {
+    string s;
+    //int t;
+    //cin >> t;
+    //while(t--){
+        cin >> s;
+        for(int i=0; i<s.length(); i++){
+            if(chars[s[i]-96]==0){
+                chars[s[i]-96]+=1;
+                cout << s[i];
+            }
+        }
+        memset(&chars[0], 0, chars.size() * sizeof chars[0]);
+        cout << "\n";
+
+    //}
+    return 0;
+}

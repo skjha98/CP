@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int n, prod=1, p, po, temp;
+	cin >> n;
+	for(int i=0; i<n; i++){
+		cin >> p;
+		cin >> po;
+		prod=prod*((pow(p,po+1)-1)/(p-1));
+	}
+	cout << prod;
+	return 0;
+}

@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <iterator>
+
+using namespace std;
+
+vector <int> is_prime(1e5, true);
+vector <int> prime;
+
+void precompute() {
+    is_prime[0] = is_prime[1] = false;
+    for(int i=2; i<1e5; i++){
+        if(is_prime[i]){
+            for(int itr = 2*i; itr<1e5; itr+=i){
+                is_prime[itr]=false;
+            }
+            prime.push_back(i);
+        }
+    }
+}
+
+int main(){
+    precompute();
+    map <char, int> occr;
+    map <char, int>::iterator itr;
+    int t, diff=0;
+    string str;
+    cin >> t;
+    while(t--){
+        cin >> str;
+        for(int i=0; i<str.length(); i++) {
+            occr[str[i]]++;
+        }
+        int diff = occr.size();
+        if(is_prime[diff]){
+            for(itr=occr.begin();itr!=occr.end();itr++){
+                if(is_prime[itr->second]) diff--;
+            }
+
+        }
+        if(diff ==0){cout << "YES\n";}
+        else cout << "NO\n";
+        occr.clear();
+    }
+    return 0;
+}
